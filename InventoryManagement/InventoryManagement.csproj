@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    InventoryManagement (Windows Forms desktop application)
+    Contains ONLY the user interface: forms, UI controls and UI helpers.
+    All business logic and database access live in InventoryManagement.Core.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>InventoryManagement</RootNamespace>
+    <AssemblyName>InventoryManagement</AssemblyName>
+    <AssemblyTitle>Small Scale Inventory</AssemblyTitle>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+    <ApplicationVisualStyles>true</ApplicationVisualStyles>
+    <!-- Designer-generated fields are assigned in InitializeComponent(), which
+         the nullable analysis cannot see. -->
+    <NoWarn>$(NoWarn);CS8618</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryManagement.Core\InventoryManagement.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- SQL setup scripts are copied next to the .exe so DatabaseInitializer can run them. -->
+    <None Update="Scripts\*.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\*.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

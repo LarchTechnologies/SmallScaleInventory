@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    InventoryManagement.Core
+    Everything that is NOT user interface: models, business services,
+    data access (ADO.NET + stored procedures), validation, logging and
+    database initialisation. It deliberately has no reference to Windows Forms,
+    so business rules cannot leak into the UI and can be tested on their own.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>InventoryManagement</RootNamespace>
+    <AssemblyName>InventoryManagement.Core</AssemblyName>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Microsoft's supported ADO.NET provider for SQL Server / LocalDB. -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+    <!-- Reads the <connectionStrings> section of App.config. -->
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="InventoryManagement.Tests" />
+  </ItemGroup>
+
+</Project>
