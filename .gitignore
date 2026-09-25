@@ -1,0 +1,15 @@
+## .NET / Visual Studio
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userprefs
+*.rsuser
+[Tt]est[Rr]esult*/
+*.log
+Logs/
+publish/
+artifacts/
+.idea/
+*.DotSettings.user

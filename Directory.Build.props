@@ -1,0 +1,15 @@
+<Project>
+  <!-- Settings shared by every project in the solution. -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Company>Larch Technologies</Company>
+    <Product>Small Scale Inventory</Product>
+    <Version>1.0.0</Version>
+    <Copyright>Copyright © Larch Technologies</Copyright>
+    <!-- Lets the solution be compiled on build servers that are not Windows.
+         Has no effect when building on Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Automated tests.
+      * Unit tests (no database): validation rules, stock arithmetic, SQL script
+        parsing and C#/SQL consistency checks. Run anywhere with "dotnet test".
+      * Integration tests (Integration folder): run the real stored procedures
+        against SQL Server. They are SKIPPED unless the environment variable
+        INVENTORY_TEST_SQLSERVER is set (see README.md, "Automated tests").
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>InventoryManagement.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryManagement.Core\InventoryManagement.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The real SQL scripts, so tests can check them against the C# code and
+         integration tests can build a test database from them. -->
+    <None Include="..\InventoryManagement\Scripts\*.sql" Link="Scripts\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>
